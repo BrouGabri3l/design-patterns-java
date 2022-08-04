@@ -1,5 +1,9 @@
 package one.digitalinnovation.gof;
 
+import one.digitalinnovation.gof.abstractFactory.factory.AbstractFactory;
+import one.digitalinnovation.gof.abstractFactory.factory.CarFactory;
+import one.digitalinnovation.gof.abstractFactory.factory.FactoryProvider;
+import one.digitalinnovation.gof.abstractFactory.model.car.Car;
 import one.digitalinnovation.gof.facade.Facade;
 import one.digitalinnovation.gof.singleton.SingletonEager;
 import one.digitalinnovation.gof.singleton.SingletonLazy;
@@ -43,6 +47,15 @@ public class Test {
 		
 		Facade facade = new Facade();
 		facade.migrarClient("gabriel", "14460-000");
+		
+		AbstractFactory abstractFactory;
+		abstractFactory = FactoryProvider.getFactory("Car");
+		System.out.println(abstractFactory);
+		Car sedanCar = (Car)abstractFactory.create("sedan");
+		Car hatchCar = (Car)abstractFactory.create("hatchBack");
+		sedanCar.print();
+		hatchCar.print();
+		System.out.println(sedanCar);
 		
 		
 	}
